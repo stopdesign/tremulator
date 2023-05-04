@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Tremulator",
+    "description": "Better trading emulation inside TradingView",
+    "version": "0.1.3",
+    "permissions": ["tabs", "scripting", "activeTab"],
+    "host_permissions": [
+        "https://www.tradingview.com/chart/*"
+    ],
+    "content_scripts": [{
+        "world": "MAIN",
+        "css": ["src/css/style.css"],
+        "matches": ["https://www.tradingview.com/chart/*"]
+    }],
+    "background": {
+        "service_worker": "src/scripts/background.js"
+    },
+    "action": {
+        "default_title": "Enable Tremulator"
+    },
+    "web_accessible_resources": [{
+        "resources": ["src/*"],
+        "matches": ["<all_urls>"]
+    }],
+    "externally_connectable": {
+        "ids": ["*"],
+        "matches": ["<all_urls>"]
+    },
+    "icons": {
+        "256": "src/img/favicon.png"
+    }
+}
